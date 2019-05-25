@@ -10,6 +10,9 @@ export class GameRoomComponent implements OnInit {
   constructor(private gameService: GameService) { }
 
   ngOnInit() {
+    this.gameService.onMessage().subscribe((msg) => {
+
+    })
   }
 
 }
