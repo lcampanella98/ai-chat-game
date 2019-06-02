@@ -1,3 +1,23 @@
-<p>
-  game-room works!
-</p>
+<h2 style="text-align: center; ">{{gameService.myName}}</h2>
+
+<div class="row">
+  <div [classList]="['col-md-' + math.floor(12/allConversations.length)]" *ngFor="let c of allConversations">
+    <app-chat [active]="false" [conversation]="c"></app-chat>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <app-chat [active]="true" [conversation]="conv" *ngIf="conv"></app-chat>
+    <ngx-spinner
+      bdColor = "rgba(96,41,41,0)"
+      size = "medium"
+      color = "#337ab7"
+      type = "line-scale"
+      [fullScreen] = "false"
+    >
+      <p style="color: #337ab7; margin-top: 80px;" > Waiting for next conversation... </p>
+    </ngx-spinner>
+  </div>
+
+</div>

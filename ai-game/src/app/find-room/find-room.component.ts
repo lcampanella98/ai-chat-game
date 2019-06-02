@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {GameService} from "../game.service";
 import { NgxSpinnerService } from 'ngx-spinner';
 import {Message} from "../model/message";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-find-room',
@@ -11,12 +12,14 @@ import {Message} from "../model/message";
 export class FindRoomComponent implements OnInit {
   waitingForRoom: boolean = false;
 
-  constructor(private gameService: GameService, private spinService: NgxSpinnerService) { }
+  constructor(private gameService: GameService,
+              private spinService: NgxSpinnerService,
+              private router: Router) { }
 
   ngOnInit() {
     this.gameService.initSocket();
-    this.gameService.onMessage().subscribe((msg) => {
-      console.log(msg);
+    this.gameService.onJoinedRoom().subscribe((msg) => {
+      this.router.navigate(['/gameRoom']);
     });
   }
 

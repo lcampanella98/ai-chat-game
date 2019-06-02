@@ -92,13 +92,13 @@ export class GameRoom {
     sendRevealingMessage(player: HumanPlayer) {
         let guessedCorrectly: boolean = this.aiPlayer.name === player.guessAIName;
 
-        player.ws.send({
+        player.ws.send(JSON.stringify({
             msgType: 'reveal_message',
             aiPlayerName: this.aiPlayer.name,
             wasCorrect: guessedCorrectly,
             numCorrectGuesses: this.numCorrectGuesses,
             numIncorrectGuesses: this.numIncorrectGuesses
-        });
+        }));
 
     }
 

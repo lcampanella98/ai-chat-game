@@ -11,12 +11,14 @@ import { AppComponent } from './app.component';
 import { FindRoomComponent } from './find-room/find-room.component';
 import { GameRoomComponent } from './game-room/game-room.component';
 import {GameService} from "./game.service";
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FindRoomComponent,
-    GameRoomComponent
+    GameRoomComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
